@@ -2,4 +2,6 @@
 
 export("%>%")
 export(blb.coef.ci)
+export(blb.pred.ci)
+export(blb.sigma.ci)
 importFrom(magrittr,"%>%")
