@@ -4,7 +4,7 @@
 \alias{blb.coef.ci}
 \title{Bag of Little Bootstrap Confidence Interval for Linear Regression Estimators}
 \usage{
-blb.coef.ci(data, y, x, m, r, alpha)
+blb.coef.ci(data, y, x, m, r = 50, alpha = 0.05, parallel = FALSE, n_cores = 4)
 }
 \arguments{
 \item{data}{a dataframe or tibble object}
@@ -18,6 +18,10 @@ blb.coef.ci(data, y, x, m, r, alpha)
 \item{r}{the number of iteration for each boot}
 
 \item{alpha}{the significance level}
+
+\item{parallel}{parallel compute the confidence interval}
+
+\item{n_cores}{the number of processor to work on each task}
 }
 \value{
 returns a matrix of the bootstrap ci

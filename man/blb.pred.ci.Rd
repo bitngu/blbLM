@@ -4,7 +4,17 @@
 \alias{blb.pred.ci}
 \title{Bag of Little Bootstrap Confidence Interval for Prediction (Linear Model)}
 \usage{
-blb.pred.ci(data, pred_df, y, x, m, r, alpha)
+blb.pred.ci(
+  data,
+  pred_df,
+  y,
+  x,
+  m,
+  r = 50,
+  alpha = 0.05,
+  parallel = FALSE,
+  n_cores = 4
+)
 }
 \arguments{
 \item{data}{a dataframe or tibble object}
@@ -20,6 +30,10 @@ blb.pred.ci(data, pred_df, y, x, m, r, alpha)
 \item{r}{the number of iteration for each boot}
 
 \item{alpha}{the significance level}
+
+\item{parallel}{parallel compute the confidence interval}
+
+\item{n_cores}{the number of processor to work on each task}
 }
 \value{
 returns a matrix of the bootstrap ci
@@ -28,6 +42,6 @@ returns a matrix of the bootstrap ci
 Bag of Little Bootstrap Confidence Interval for Prediction (Linear Model)
 }
 \examples{
-pred_df <- tibble(Sepal.Length = c(1,2,3,4,5), Sepal.Width = c(1,2,3,4,5))
-blb.pred.ci(iris, df, "Petal.Width", c("Sepal.Length", "Sepal.Width"), 10, 15, 0.05)
+pred_df <- dplyr::tibble(Sepal.Length = c(1,2,3,4,5), Sepal.Width = c(1,2,3,4,5))
+blb.pred.ci(iris, pred_df, "Petal.Width", c("Sepal.Length", "Sepal.Width"), 10, 15, 0.05)
 }

@@ -4,8 +4,8 @@ Title: blbLinReg
 Version: 0.1.0
 Author: Bi Nguyen
 Maintainer: The package maintainer <biinguyen@ucdavis.edu>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package is build upon the sampling method of bag of little bootstrap using
+    simple or multiple linear regression. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -14,4 +14,6 @@ Imports:
     purrr,
     dplyr,
     stats,
+    furrr,
+    future
 RoxygenNote: 7.0.2
