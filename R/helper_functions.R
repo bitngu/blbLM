@@ -92,10 +92,10 @@ blb.sigma.ci.list <- function(data, y, x, m, r = 10, alpha = 0.05,  parallel = F
 
 #blb.pred.ci.list is a helper function that calculates the bootstrap percentile for the prediction values
 #returns a list of the percentile confidence interval
-blb.pred.ci.list <- function(data, pred_df, y, x, m, r, alpha = 0.05, parallel = FALSE, n_core = 4){
+blb.pred.ci.list <- function(data, pred_df, y, x, m, r, alpha = 0.05, parallel = FALSE, n_cores = 4){
   subSamples <- groupSplit(data, m)
   if (parallel){
-    future::plan(future::multiprocess, n_core)
+    future::plan(future::multiprocess, workers = n_cores)
     subSamples %>% furrr::future_map(function(df){
       1:r %>% purrr::map(~each_boot_pred(df, nrow(data), ., y, x, pred_df))
     }) %>% purrr::map(purrr::reduce, rbind) %>%
@@ -108,8 +108,6 @@ blb.pred.ci.list <- function(data, pred_df, y, x, m, r, alpha = 0.05, parallel =
     purrr::map(perc.conf.int, alpha)
   }
 }
-
-
 
 #avg_ci is a helper function that calculates the average percentile of the bootstrap methods
 avg_ci <- function(ci){
